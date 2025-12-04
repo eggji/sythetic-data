@@ -1,0 +1,493 @@
+import os
+import json
+import yaml
+import random
+import math
+from dataclasses import dataclass
+from typing import List, Dict
+from datetime import datetime, timedelta
+
+# =========================
+# 基础工具函数
+# =========================
+
+def ensure_dir(path: str):
+    os.makedirs(path, exist_ok=True)
+
+def write_json(path: str, obj):
+    with open(path, "w") as f:
+        json.dump(obj, f, indent=2)
+
+def write_yaml(path: str, obj):
+    with open(path, "w") as f:
+        yaml.safe_dump(obj, f, sort_keys=False)
+
+def write_text(path: str, s: str):
+    with open(path, "w") as f:
+        f.write(s)
+
+def gen_timestamps(start: str, n: int, step_sec: int = 60) -> List[str]:
+    base = datetime.strptime(start, "%H:%M:%S")
+    return [
+        (base + timedelta(seconds=i * step_sec)).strftime("%H:%M:%S")
+        for i in range(n)
+    ]
+
+# =========================
+# Level 定义
+# =========================
+
+@dataclass
+class LevelSpec:
+    level: int
+    num_logs: int          # 日志行数
+    num_metrics: int       # 时间点个数
+    noise_ratio: float     # 额外噪声日志比例
+    num_services: int      # 参与服务数量（从 config.services 里截取）
+    causal_hops: int       # 目标因果链长度（描述用）
+
+LEVEL_SPECS: Dict[int, LevelSpec] = {
+    1: LevelSpec(level=1, num_logs=220,  num_metrics=40,  noise_ratio=0.05, num_services=2, causal_hops=1),
+    2: LevelSpec(level=2, num_logs=400,  num_metrics=60,  noise_ratio=0.15, num_services=3, causal_hops=2),
+    3: LevelSpec(level=3, num_logs=800,  num_metrics=80,  noise_ratio=0.25, num_services=4, causal_hops=3),
+    4: LevelSpec(level=4, num_logs=1200, num_metrics=100, noise_ratio=0.35, num_services=6, causal_hops=5),
+    5: LevelSpec(level=5, num_logs=2000, num_metrics=120, noise_ratio=0.45, num_services=8, causal_hops=7),
+}
+
+# =========================
+# Incident 配置
+# =========================
+
+@dataclass
+class IncidentConfig:
+    incident_id: str
+    problem_type: str              # db_slow / oom / redis_eviction / ...
+    services: List[str]            # 最大服务列表（level 用前 N 个）
+    root_cause_service: str
+    description: str
+    remediation_steps: List[str]
+    base_tasks: str
+
+# 各 type 配置（services 给多一些，方便高 level 用）
+DB_SLOW_CONFIG = IncidentConfig(
+    incident_id="db_slow",
+    problem_type="db_slow",
+    services=["frontend", "api", "auth", "db", "metrics", "logging", "cache", "queue"],
+    root_cause_service="db",
+    description="Slow database queries cause API timeouts and frontend latency.",
+    remediation_steps=[
+        "Add proper index to the slow query.",
+        "Optimize or rewrite the query.",
+        "Introduce caching for frequently accessed data."
+    ],
+    base_tasks="""\
+Task 1 — Summarize the incident from metrics and logs.
+Task 2 — Identify the most likely root cause and where it resides.
+Task 3 — Reconstruct the causal chain from root cause to user impact.
+Task 4 — Propose a concrete remediation plan.
+Task 5 — Suggest how to prevent similar incidents in the future.
+"""
+)
+
+OOM_CONFIG = IncidentConfig(
+    incident_id="oom",
+    problem_type="oom",
+    services=["frontend", "api", "worker", "metrics", "logging", "queue", "cron", "monitor"],
+    root_cause_service="worker",
+    description="A memory leak in the worker service leads to OOMKilled and restarts.",
+    remediation_steps=[
+        "Profile and fix the memory leak in worker code.",
+        "Set realistic memory limits and requests.",
+        "Add alerts on memory usage slope and container restarts."
+    ],
+    base_tasks=DB_SLOW_CONFIG.base_tasks
+)
+
+REDIS_CONFIG = IncidentConfig(
+    incident_id="redis_eviction",
+    problem_type="redis_eviction",
+    services=["api", "redis", "db", "metrics", "logging", "frontend", "queue", "worker"],
+    root_cause_service="redis",
+    description="Redis evictions cause cache miss storms and increased DB load.",
+    remediation_steps=[
+        "Increase Redis memory or scale horizontally.",
+        "Review TTL and key eviction policy.",
+        "Reduce cached key set to critical hot data."
+    ],
+    base_tasks=DB_SLOW_CONFIG.base_tasks
+)
+
+LB_CONFIG = IncidentConfig(
+    incident_id="lb_misroute",
+    problem_type="lb_misroute",
+    services=["client", "lb", "apiA", "apiB", "metrics", "logging", "waf", "gateway"],
+    root_cause_service="lb",
+    description="Load balancer misconfiguration routes traffic to an unhealthy backend.",
+    remediation_steps=[
+        "Fix LB backend configuration and health checks.",
+        "Remove or drain unhealthy backends from the pool.",
+        "Add automated failover policies."
+    ],
+    base_tasks=DB_SLOW_CONFIG.base_tasks
+)
+
+TLS_CONFIG = IncidentConfig(
+    incident_id="tls_expired",
+    problem_type="tls_expired",
+    services=["client", "gateway", "auth", "metrics", "logging", "waf", "dns", "edge"],
+    root_cause_service="gateway",
+    description="Expired TLS certificates cause handshake failures.",
+    remediation_steps=[
+        "Renew and redeploy TLS certificates.",
+        "Automate certificate rotation.",
+        "Monitor certificate expiration dates."
+    ],
+    base_tasks=DB_SLOW_CONFIG.base_tasks
+)
+
+POOL_CONFIG = IncidentConfig(
+    incident_id="pool_exhaust",
+    problem_type="pool_exhaust",
+    services=["frontend", "api", "db", "metrics", "logging", "queue", "worker", "report"],
+    root_cause_service="api",
+    description="Database connection pool is exhausted and API cannot obtain connections.",
+    remediation_steps=[
+        "Right-size the connection pool limits.",
+        "Fix any connection leaks in API code.",
+        "Apply rate limiting or queueing under high load."
+    ],
+    base_tasks=DB_SLOW_CONFIG.base_tasks
+)
+
+SCHEMA_CONFIG = IncidentConfig(
+    incident_id="schema_change",
+    problem_type="schema_change",
+    services=["producer", "broker", "consumer", "metrics", "logging", "etl", "report", "ai"],
+    root_cause_service="producer",
+    description="An incompatible schema change breaks downstream consumers.",
+    remediation_steps=[
+        "Introduce schema versioning and compatibility checks.",
+        "Coordinate producer and consumer deployments.",
+        "Implement tolerant readers on the consumer side."
+    ],
+    base_tasks=DB_SLOW_CONFIG.base_tasks
+)
+
+NOISE_CONFIG = IncidentConfig(
+    incident_id="noise_only",
+    problem_type="noise_only",
+    services=["frontend", "metrics", "logging", "proxy", "edge", "cache", "api", "cdn"],
+    root_cause_service="frontend",
+    description="No real incident; noisy warnings from deprecated API usage.",
+    remediation_steps=[
+        "Reduce log level or sampling of deprecated API warnings.",
+        "Plan migration away from deprecated API.",
+        "Educate team to distinguish noise from real incidents."
+    ],
+    base_tasks=DB_SLOW_CONFIG.base_tasks
+)
+
+ALL_CONFIGS = [
+    DB_SLOW_CONFIG,
+    OOM_CONFIG,
+    REDIS_CONFIG,
+    LB_CONFIG,
+    TLS_CONFIG,
+    POOL_CONFIG,
+    SCHEMA_CONFIG,
+    NOISE_CONFIG,
+]
+
+# =========================
+# metrics 生成
+# =========================
+
+def generate_metrics(config: IncidentConfig, level_spec: LevelSpec) -> Dict:
+    n = level_spec.num_metrics
+    ts = gen_timestamps("10:00:00", n, step_sec=60)
+
+    # baseline
+    cpu = [25 + i * 0.3 for i in range(n)]
+    mem = [300 + i * 5   for i in range(n)]
+    lat = [100 + i * 1.5 for i in range(n)]
+    err = [0.0 for _ in range(n)]
+    qps = [200 + i       for i in range(n)]
+    rx  = [400 + i * 4   for i in range(n)]
+    tx  = [250 + i * 3   for i in range(n)]
+    rd  = [60  + i * 0.5 for i in range(n)]
+    wr  = [30  + (i // 4) for i in range(n)]
+    th  = [50  + (i // 6) for i in range(n)]
+    gc  = [4   + (i // 10) for i in range(n)]
+    restarts = [0 for _ in range(n)]
+
+    # anomaly 注入
+    if config.problem_type == "db_slow":
+        lat = [100 + math.pow(i, 1.3) for i in range(n)]
+        for i in range(n):
+            if i > n * 0.3:
+                err[i] = min(10.0, (i - n * 0.3) * 0.25)
+
+    elif config.problem_type == "oom":
+        for i in range(n):
+            mem[i] = 300 + i * 15
+            gc[i] = 4 + (i // 5)
+        # 最后 1/4 段出现重启
+        for i in range(int(n * 0.75), n):
+            restarts[i] = (i - int(n * 0.75)) // 5 + 1
+            lat[i] = 150 + (i - int(n * 0.75)) * 5
+            err[i] = min(8.0, (i - int(n * 0.75)) * 0.4)
+
+    elif config.problem_type == "redis_eviction":
+        for i in range(n):
+            lat[i] = 100 + i * 2.5
+            if i > n * 0.4:
+                err[i] = min(8.0, (i - n * 0.4) * 0.2)
+
+    elif config.problem_type == "lb_misroute":
+        for i in range(n):
+            if i > n * 0.3:
+                err[i] = 5.0
+                lat[i] = 150 + (i - n * 0.3) * 1.0
+
+    elif config.problem_type == "tls_expired":
+        for i in range(n):
+            if i > n * 0.6:
+                err[i] = min(10.0, (i - n * 0.6) * 0.5)
+
+    elif config.problem_type == "pool_exhaust":
+        for i in range(n):
+            lat[i] = 100 + i * 3.0
+            if i > n * 0.5:
+                err[i] = min(9.0, (i - n * 0.5) * 0.3)
+
+    elif config.problem_type == "schema_change":
+        for i in range(n):
+            if i > n * 0.5:
+                err[i] = min(9.0, (i - n * 0.5) * 0.4)
+
+    elif config.problem_type == "noise_only":
+        # 基本健康
+        lat = [100 + i * 0.8 for i in range(n)]
+        err = [0.0 for _ in range(n)]
+
+    # Level 3+ 添加 confounding CPU spike
+    if level_spec.level >= 3:
+        for i in range(int(n * 0.6), n):
+            cpu[i] += random.uniform(10, 30)
+
+    # Level 4+ 添加无关 error spike
+    if level_spec.level >= 4:
+        for i in random.sample(range(n), k=max(1, int(0.08 * n))):
+            err[i] = max(err[i], random.uniform(1.0, 5.0))
+
+    return {
+        "timestamp": ts,
+        "cpu_percent": cpu,
+        "memory_mb": mem,
+        "latency_ms": lat,
+        "error_rate": err,
+        "qps": qps,
+        "network_rx_kb": rx,
+        "network_tx_kb": tx,
+        "disk_read_iops": rd,
+        "disk_write_iops": wr,
+        "thread_count": th,
+        "gc_pause_ms": gc,
+        "container_restarts": restarts,
+    }
+
+# =========================
+# logs 生成
+# =========================
+
+def generate_logs(config: IncidentConfig, level_spec: LevelSpec) -> Dict:
+    total = level_spec.num_logs
+    logs = []
+
+    # 70% INFO, 20% WARN, 10% ERROR
+    num_info  = int(total * 0.7)
+    num_warn  = int(total * 0.2)
+    num_error = total - num_info - num_warn
+
+    # INFO
+    for i in range(num_info):
+        ts = f"10:{(i // 60):02d}:{(i % 60):02d}"
+        svc = random.choice(config.services[:level_spec.num_services])
+        if random.random() < 0.2:
+            msg = f"{svc}: handling request id={100000 + i}"
+        else:
+            msg = f"{svc}: healthcheck OK"
+        logs.append({"ts": ts, "service": svc, "level": "INFO", "msg": msg})
+
+    # WARN
+    for i in range(num_warn):
+        idx = num_info + i
+        ts = f"10:{(idx // 60):02d}:{(idx % 60):02d}"
+        svc = random.choice(config.services[:level_spec.num_services])
+
+        pt = config.problem_type
+        if pt == "db_slow" and svc == "db":
+            msg = "db: slow query detected; duration>800ms"
+        elif pt == "oom" and svc == "worker":
+            msg = "worker: memory usage high; close to limit"
+        elif pt == "redis_eviction" and svc == "redis":
+            msg = "redis: memory high; eviction may start soon"
+        elif pt == "lb_misroute" and svc == "lb":
+            msg = "lb: backend apiB marked unhealthy"
+        elif pt == "tls_expired" and svc == "gateway":
+            msg = "gateway: TLS certificate will expire soon"
+        elif pt == "pool_exhaust" and svc == "api":
+            msg = "api: db connection pool usage high"
+        elif pt == "schema_change" and svc == "consumer":
+            msg = "consumer: unknown field encountered; potential schema change"
+        elif pt == "noise_only":
+            msg = f"{svc}: WARN: deprecated API used; no functional impact"
+        else:
+            msg = f"{svc}: WARN: minor latency fluctuation observed"
+        logs.append({"ts": ts, "service": svc, "level": "WARN", "msg": msg})
+
+    # ERROR
+    for i in range(num_error):
+        idx = num_info + num_warn + i
+        ts = f"10:{(idx // 60):02d}:{(idx % 60):02d}"
+
+        # 大部分错误来自 root_cause_service
+        if random.random() < 0.7:
+            svc = config.root_cause_service
+        else:
+            svc = random.choice(config.services[:level_spec.num_services])
+
+        pt = config.problem_type
+        if pt == "db_slow" and svc == "db":
+            if i == 0:
+                msg = "ERROR: db timeout after 2000ms on query SELECT * FROM orders WHERE user_id=?"
+            else:
+                msg = "ERROR: db slow query; connection pool wait > 1500ms"
+        elif pt == "oom" and svc == "worker":
+            if i == 0:
+                msg = "ERROR: OutOfMemoryError: Java heap space"
+            else:
+                msg = "ERROR: container terminated by OOMKiller; restarting worker"
+        elif pt == "redis_eviction" and svc == "redis":
+            msg = "ERROR: redis eviction; hot keys evicted; cache miss storm detected"
+        elif pt == "lb_misroute" and svc == "lb":
+            msg = "ERROR: LB routing traffic to offline backend; returning 503 to clients"
+        elif pt == "tls_expired" and svc == "gateway":
+            msg = "ERROR: TLS handshake failed: certificate expired"
+        elif pt == "pool_exhaust" and svc == "api":
+            msg = "ERROR: no idle DB connections available in pool; request failed"
+        elif pt == "schema_change" and svc == "consumer":
+            msg = "ERROR: JSON parse error: cannot map field 'price_cents'; dropping message"
+        elif pt == "noise_only":
+            msg = f"{svc}: ERROR: noisy error log but system metrics remain normal"
+        else:
+            msg = f"{svc}: ERROR: upstream timeout while calling dependency"
+
+        logs.append({"ts": ts, "service": svc, "level": "ERROR", "msg": msg})
+
+    # 额外噪声（INFO/WARN）
+    noise_count = int(total * level_spec.noise_ratio)
+    for i in range(noise_count):
+        ts = f"10:{(i // 60):02d}:{(i % 60):02d}"
+        svc = random.choice(config.services[:level_spec.num_services])
+        logs.append({
+            "ts": ts,
+            "service": svc,
+            "level": random.choice(["INFO", "WARN"]),
+            "msg": f"{svc}: noisy log line with no real impact (noise_id={i})"
+        })
+
+    logs.sort(key=lambda x: x["ts"])
+    return {"logs": logs}
+
+# =========================
+# service_graph 生成
+# =========================
+
+def generate_service_graph(config: IncidentConfig, level_spec: LevelSpec) -> Dict:
+    nodes = config.services[: level_spec.num_services]
+    edges: Dict[str, List[str]] = {}
+    # 简单链 + 部分分支
+    for i, svc in enumerate(nodes):
+        if i < len(nodes) - 1:
+            # 偶尔加一个分支
+            if i+2 < len(nodes) and random.random() < 0.3:
+                edges[svc] = [nodes[i+1], nodes[i+2]]
+            else:
+                edges[svc] = [nodes[i+1]]
+        else:
+            edges[svc] = []
+    return {"nodes": nodes, "edges": edges}
+
+# =========================
+# ground_truth 生成
+# =========================
+
+def generate_ground_truth(config: IncidentConfig, level_spec: LevelSpec) -> Dict:
+    # root_cause 描述可以按 problem_type 微调；这里简单处理
+    root_cause_map = {
+        "db_slow": "Slow database queries causing API timeouts",
+        "oom": "Memory leak in worker leading to OOMKilled",
+        "redis_eviction": "Redis evictions causing cache miss storm",
+        "lb_misroute": "Load balancer misrouting traffic to unhealthy backend",
+        "tls_expired": "Expired TLS certificate causing handshake failures",
+        "pool_exhaust": "Database connection pool exhaustion",
+        "schema_change": "Incompatible schema change in producer breaking consumer",
+        "noise_only": "No real incident; log noise from deprecated API usage",
+    }
+    return {
+        "incident_id": f"{config.incident_id}_L{level_spec.level}",
+        "problem_type": config.problem_type,
+        "root_cause": root_cause_map.get(config.problem_type, ""),
+        "root_cause_service": config.root_cause_service,
+        "causal_hops": level_spec.causal_hops,
+        "severity": "SEV2" if level_spec.level <= 3 else "SEV1",
+        "description": config.description,
+        "remediation": config.remediation_steps,
+    }
+
+# =========================
+# tasks.md 生成
+# =========================
+
+def generate_tasks_md(config: IncidentConfig, level_spec: LevelSpec) -> str:
+    return f"""\
+# Incident: {config.incident_id} (Level {level_spec.level})
+
+{config.description}
+
+{config.base_tasks}
+"""
+
+# =========================
+# 顶层：生成 bundle
+# =========================
+
+def generate_incident_bundle(config: IncidentConfig, level: int, out_root: str):
+    level_spec = LEVEL_SPECS[level]
+    incident_dir = os.path.join(out_root, f"{config.incident_id}_L{level}")
+    ensure_dir(incident_dir)
+
+    metrics = generate_metrics(config, level_spec)
+    logs = generate_logs(config, level_spec)
+    graph = generate_service_graph(config, level_spec)
+    gt = generate_ground_truth(config, level_spec)
+    tasks = generate_tasks_md(config, level_spec)
+
+    write_json(os.path.join(incident_dir, "metrics.json"), metrics)
+    write_json(os.path.join(incident_dir, "logs.json"), logs)
+    write_json(os.path.join(incident_dir, "service_graph.json"), graph)
+    write_yaml(os.path.join(incident_dir, "ground_truth.yaml"), gt)
+    write_text(os.path.join(incident_dir, "tasks.md"), tasks)
+
+    print(f"Generated {incident_dir}")
+
+# =========================
+# main
+# =========================
+
+if __name__ == "__main__":
+    OUTPUT_ROOT = "./sre_benchmark_generated"
+    for cfg in ALL_CONFIGS:
+        for lvl in range(1, 6):
+            generate_incident_bundle(cfg, lvl, OUTPUT_ROOT)
