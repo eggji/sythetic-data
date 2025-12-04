@@ -1,0 +1,1 @@
+Explain why cache hit rate dropped and how it affected API latency.

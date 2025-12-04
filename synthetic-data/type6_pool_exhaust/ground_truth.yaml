@@ -1,0 +1,12 @@
+incident_id: type6_pool_exhaust_easy
+root_cause: Database connection pool exhausted due to increased traffic or leaks
+anomaly_source: api
+signal_path:
+- traffic increases or connections not returned to pool
+- pool usage reaches 100%
+- api cannot obtain connections and requests fail
+remediation:
+- Right-size connection pool limits
+- Fix any connection leaks in api code
+- Apply rate limiting or queueing under high load
+severity: SEV2

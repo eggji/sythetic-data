@@ -1,0 +1,1104 @@
+{
+  "logs": [
+    {
+      "ts": "10:00:00",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1000"
+    },
+    {
+      "ts": "10:00:01",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1001"
+    },
+    {
+      "ts": "10:00:02",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1002"
+    },
+    {
+      "ts": "10:00:03",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1003"
+    },
+    {
+      "ts": "10:00:04",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1004"
+    },
+    {
+      "ts": "10:00:05",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1005"
+    },
+    {
+      "ts": "10:00:06",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1006"
+    },
+    {
+      "ts": "10:00:07",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1007"
+    },
+    {
+      "ts": "10:00:08",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1008"
+    },
+    {
+      "ts": "10:00:09",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1009"
+    },
+    {
+      "ts": "10:00:10",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1010"
+    },
+    {
+      "ts": "10:00:11",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1011"
+    },
+    {
+      "ts": "10:00:12",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1012"
+    },
+    {
+      "ts": "10:00:13",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1013"
+    },
+    {
+      "ts": "10:00:14",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1014"
+    },
+    {
+      "ts": "10:00:15",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1015"
+    },
+    {
+      "ts": "10:00:16",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1016"
+    },
+    {
+      "ts": "10:00:17",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1017"
+    },
+    {
+      "ts": "10:00:18",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1018"
+    },
+    {
+      "ts": "10:00:19",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1019"
+    },
+    {
+      "ts": "10:00:20",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1020"
+    },
+    {
+      "ts": "10:00:21",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1021"
+    },
+    {
+      "ts": "10:00:22",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1022"
+    },
+    {
+      "ts": "10:00:23",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1023"
+    },
+    {
+      "ts": "10:00:24",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1024"
+    },
+    {
+      "ts": "10:00:25",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1025"
+    },
+    {
+      "ts": "10:00:26",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1026"
+    },
+    {
+      "ts": "10:00:27",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1027"
+    },
+    {
+      "ts": "10:00:28",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1028"
+    },
+    {
+      "ts": "10:00:29",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1029"
+    },
+    {
+      "ts": "10:00:30",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1030"
+    },
+    {
+      "ts": "10:00:31",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1031"
+    },
+    {
+      "ts": "10:00:32",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1032"
+    },
+    {
+      "ts": "10:00:33",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1033"
+    },
+    {
+      "ts": "10:00:34",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1034"
+    },
+    {
+      "ts": "10:00:35",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1035"
+    },
+    {
+      "ts": "10:00:36",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1036"
+    },
+    {
+      "ts": "10:00:37",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1037"
+    },
+    {
+      "ts": "10:00:38",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1038"
+    },
+    {
+      "ts": "10:00:39",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1039"
+    },
+    {
+      "ts": "10:00:40",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1040"
+    },
+    {
+      "ts": "10:00:41",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1041"
+    },
+    {
+      "ts": "10:00:42",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1042"
+    },
+    {
+      "ts": "10:00:43",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1043"
+    },
+    {
+      "ts": "10:00:44",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1044"
+    },
+    {
+      "ts": "10:00:45",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1045"
+    },
+    {
+      "ts": "10:00:46",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1046"
+    },
+    {
+      "ts": "10:00:47",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1047"
+    },
+    {
+      "ts": "10:00:48",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1048"
+    },
+    {
+      "ts": "10:00:49",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1049"
+    },
+    {
+      "ts": "10:00:50",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1050"
+    },
+    {
+      "ts": "10:00:51",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1051"
+    },
+    {
+      "ts": "10:00:52",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1052"
+    },
+    {
+      "ts": "10:00:53",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1053"
+    },
+    {
+      "ts": "10:00:54",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1054"
+    },
+    {
+      "ts": "10:00:55",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1055"
+    },
+    {
+      "ts": "10:00:56",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1056"
+    },
+    {
+      "ts": "10:00:57",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1057"
+    },
+    {
+      "ts": "10:00:58",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1058"
+    },
+    {
+      "ts": "10:00:59",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1059"
+    },
+    {
+      "ts": "10:01:00",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1060"
+    },
+    {
+      "ts": "10:01:01",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1061"
+    },
+    {
+      "ts": "10:01:02",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1062"
+    },
+    {
+      "ts": "10:01:03",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1063"
+    },
+    {
+      "ts": "10:01:04",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1064"
+    },
+    {
+      "ts": "10:01:05",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1065"
+    },
+    {
+      "ts": "10:01:06",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1066"
+    },
+    {
+      "ts": "10:01:07",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1067"
+    },
+    {
+      "ts": "10:01:08",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1068"
+    },
+    {
+      "ts": "10:01:09",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1069"
+    },
+    {
+      "ts": "10:01:10",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1070"
+    },
+    {
+      "ts": "10:01:11",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1071"
+    },
+    {
+      "ts": "10:01:12",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1072"
+    },
+    {
+      "ts": "10:01:13",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1073"
+    },
+    {
+      "ts": "10:01:14",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1074"
+    },
+    {
+      "ts": "10:01:15",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1075"
+    },
+    {
+      "ts": "10:01:16",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1076"
+    },
+    {
+      "ts": "10:01:17",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1077"
+    },
+    {
+      "ts": "10:01:18",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1078"
+    },
+    {
+      "ts": "10:01:19",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1079"
+    },
+    {
+      "ts": "10:01:20",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1080"
+    },
+    {
+      "ts": "10:01:21",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1081"
+    },
+    {
+      "ts": "10:01:22",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1082"
+    },
+    {
+      "ts": "10:01:23",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1083"
+    },
+    {
+      "ts": "10:01:24",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1084"
+    },
+    {
+      "ts": "10:01:25",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1085"
+    },
+    {
+      "ts": "10:01:26",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1086"
+    },
+    {
+      "ts": "10:01:27",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1087"
+    },
+    {
+      "ts": "10:01:28",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1088"
+    },
+    {
+      "ts": "10:01:29",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1089"
+    },
+    {
+      "ts": "10:01:30",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1090"
+    },
+    {
+      "ts": "10:01:31",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1091"
+    },
+    {
+      "ts": "10:01:32",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1092"
+    },
+    {
+      "ts": "10:01:33",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1093"
+    },
+    {
+      "ts": "10:01:34",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1094"
+    },
+    {
+      "ts": "10:01:35",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1095"
+    },
+    {
+      "ts": "10:01:36",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1096"
+    },
+    {
+      "ts": "10:01:37",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1097"
+    },
+    {
+      "ts": "10:01:38",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1098"
+    },
+    {
+      "ts": "10:01:39",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1099"
+    },
+    {
+      "ts": "10:01:40",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1100"
+    },
+    {
+      "ts": "10:01:41",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1101"
+    },
+    {
+      "ts": "10:01:42",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1102"
+    },
+    {
+      "ts": "10:01:43",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1103"
+    },
+    {
+      "ts": "10:01:44",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1104"
+    },
+    {
+      "ts": "10:01:45",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1105"
+    },
+    {
+      "ts": "10:01:46",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1106"
+    },
+    {
+      "ts": "10:01:47",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1107"
+    },
+    {
+      "ts": "10:01:48",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1108"
+    },
+    {
+      "ts": "10:01:49",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1109"
+    },
+    {
+      "ts": "10:01:50",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1110"
+    },
+    {
+      "ts": "10:01:51",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1111"
+    },
+    {
+      "ts": "10:01:52",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1112"
+    },
+    {
+      "ts": "10:01:53",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1113"
+    },
+    {
+      "ts": "10:01:54",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1114"
+    },
+    {
+      "ts": "10:01:55",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1115"
+    },
+    {
+      "ts": "10:01:56",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1116"
+    },
+    {
+      "ts": "10:01:57",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1117"
+    },
+    {
+      "ts": "10:01:58",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1118"
+    },
+    {
+      "ts": "10:01:59",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1119"
+    },
+    {
+      "ts": "10:02:00",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1120"
+    },
+    {
+      "ts": "10:02:01",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1121"
+    },
+    {
+      "ts": "10:02:02",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1122"
+    },
+    {
+      "ts": "10:02:03",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1123"
+    },
+    {
+      "ts": "10:02:04",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1124"
+    },
+    {
+      "ts": "10:02:05",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1125"
+    },
+    {
+      "ts": "10:02:06",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1126"
+    },
+    {
+      "ts": "10:02:07",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1127"
+    },
+    {
+      "ts": "10:02:08",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1128"
+    },
+    {
+      "ts": "10:02:09",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1129"
+    },
+    {
+      "ts": "10:02:10",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1130"
+    },
+    {
+      "ts": "10:02:11",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1131"
+    },
+    {
+      "ts": "10:02:12",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1132"
+    },
+    {
+      "ts": "10:02:13",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1133"
+    },
+    {
+      "ts": "10:02:14",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1134"
+    },
+    {
+      "ts": "10:02:15",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1135"
+    },
+    {
+      "ts": "10:02:16",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1136"
+    },
+    {
+      "ts": "10:02:17",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1137"
+    },
+    {
+      "ts": "10:02:18",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1138"
+    },
+    {
+      "ts": "10:02:19",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1139"
+    },
+    {
+      "ts": "10:02:20",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1140"
+    },
+    {
+      "ts": "10:02:21",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1141"
+    },
+    {
+      "ts": "10:02:22",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1142"
+    },
+    {
+      "ts": "10:02:23",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1143"
+    },
+    {
+      "ts": "10:02:24",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1144"
+    },
+    {
+      "ts": "10:02:25",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1145"
+    },
+    {
+      "ts": "10:02:26",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1146"
+    },
+    {
+      "ts": "10:02:27",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1147"
+    },
+    {
+      "ts": "10:02:28",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1148"
+    },
+    {
+      "ts": "10:02:29",
+      "level": "INFO",
+      "msg": "api get user session for user_id=1149"
+    },
+    {
+      "ts": "10:02:30",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:31",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:32",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:33",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:34",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:35",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:36",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:37",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:38",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:39",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:40",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:41",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:42",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:43",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:44",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:45",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:46",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:47",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:48",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:49",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:50",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:51",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:52",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:53",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:54",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:55",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:56",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:57",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:58",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:02:59",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:00",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:01",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:02",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:03",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:04",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:05",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:06",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:07",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:08",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:09",
+      "level": "WARN",
+      "msg": "redis memory high; approaching max memory"
+    },
+    {
+      "ts": "10:03:10",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:11",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:12",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:13",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:14",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:15",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:16",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:17",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:18",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:19",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:20",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:21",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:22",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:23",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:24",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:25",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:26",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:27",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:28",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:29",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:30",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:31",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:32",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:33",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:34",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:35",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:36",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:37",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:38",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    },
+    {
+      "ts": "10:03:39",
+      "level": "ERROR",
+      "msg": "redis eviction event; key dropped; cache miss storm detected"
+    }
+  ]
+}

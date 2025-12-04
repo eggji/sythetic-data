@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    "frontend",
+    "worker"
+  ],
+  "edges": {
+    "frontend": [
+      "worker"
+    ],
+    "worker": []
+  }
+}

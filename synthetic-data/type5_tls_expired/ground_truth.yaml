@@ -1,0 +1,12 @@
+incident_id: type5_tls_expired_easy
+root_cause: Expired TLS certificate on the gateway
+anomaly_source: gateway
+signal_path:
+- certificate reaches expiration date
+- TLS handshakes start failing
+- clients cannot establish secure connections
+remediation:
+- Renew TLS certificate and deploy updated certs
+- Implement automated certificate rotation
+- Add monitoring on certificate expiration dates
+severity: SEV1

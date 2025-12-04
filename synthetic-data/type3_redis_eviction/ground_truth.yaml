@@ -1,0 +1,13 @@
+incident_id: type3_redis_eviction_easy
+root_cause: Redis memory full leading to key evictions and cache miss storm
+anomaly_source: redis
+signal_path:
+- redis memory usage grows
+- evictions start
+- cache hit rate drops
+- api latency increases due to db fallbacks
+remediation:
+- Increase redis memory limit or scale horizontally
+- Review TTL settings and eviction policy
+- Cache fewer, more critical keys if memory constrained
+severity: SEV3

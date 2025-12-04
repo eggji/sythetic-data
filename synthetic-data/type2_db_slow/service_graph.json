@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    "frontend",
+    "api",
+    "db"
+  ],
+  "edges": {
+    "frontend": [
+      "api"
+    ],
+    "api": [
+      "db"
+    ],
+    "db": []
+  }
+}

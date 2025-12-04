@@ -1,0 +1,11 @@
+incident_id: type8_noise_only_easy
+root_cause: No real incident; noisy warnings from deprecated API usage
+anomaly_source: frontend
+signal_path:
+- application emits many warnings for deprecated API
+- logs appear noisy but metrics remain healthy
+remediation:
+- Reduce log level or sampling for deprecated API warnings
+- Plan migration away from deprecated API
+- Educate team about distinguishing noise from real incidents
+severity: SEV4

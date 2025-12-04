@@ -1,0 +1,13 @@
+incident_id: type1_oom_easy
+root_cause: Memory leak in worker service
+anomaly_source: worker
+signal_path:
+- memory usage gradually increases
+- GC attempts increase
+- OutOfMemoryError thrown
+- container OOMKilled
+remediation:
+- Fix memory leak in worker code
+- Set proper memory limits
+- Add auto-restart backoff policy
+severity: SEV3

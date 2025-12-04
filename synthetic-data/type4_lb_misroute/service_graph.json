@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    "lb",
+    "apiA",
+    "apiB"
+  ],
+  "edges": {
+    "lb": [
+      "apiA",
+      "apiB"
+    ],
+    "apiA": [],
+    "apiB": []
+  }
+}

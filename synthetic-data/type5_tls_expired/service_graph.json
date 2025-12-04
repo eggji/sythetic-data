@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    "client",
+    "gateway"
+  ],
+  "edges": {
+    "client": [
+      "gateway"
+    ],
+    "gateway": []
+  }
+}

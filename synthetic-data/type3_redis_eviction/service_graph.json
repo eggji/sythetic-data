@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    "api",
+    "redis"
+  ],
+  "edges": {
+    "api": [
+      "redis"
+    ],
+    "redis": []
+  }
+}

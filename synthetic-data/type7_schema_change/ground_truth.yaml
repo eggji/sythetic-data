@@ -1,0 +1,12 @@
+incident_id: type7_schema_change_easy
+root_cause: Producer deployed an incompatible schema without coordinating with consumer
+anomaly_source: producer
+signal_path:
+- producer adds new field to payload
+- consumer cannot parse the new schema
+- parse errors and message drops increase
+remediation:
+- Introduce schema versioning and compatibility checks
+- Coordinate producer and consumer deployments
+- Implement tolerant readers on the consumer side
+severity: SEV2

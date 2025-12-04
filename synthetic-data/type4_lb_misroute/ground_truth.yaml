@@ -1,0 +1,12 @@
+incident_id: type4_lb_misroute_easy
+root_cause: Load balancer misconfiguration sending traffic to an offline backend
+anomaly_source: lb
+signal_path:
+- backend apiB becomes unavailable
+- LB still routes a portion of traffic to apiB
+- clients receive 503 errors
+remediation:
+- Update LB configuration to remove offline backend
+- Improve health checks for backend pools
+- Add automatic failover policy for unhealthy backends
+severity: SEV2

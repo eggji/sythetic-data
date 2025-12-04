@@ -1,0 +1,13 @@
+incident_id: type2_db_slow_easy
+root_cause: Slow database query causing API timeouts
+anomaly_source: db
+signal_path:
+- db latency increases
+- api calls wait longer
+- api timeouts increase
+- frontend latency and errors increase
+remediation:
+- Add appropriate index to slow query
+- Optimize query or break into smaller queries
+- Consider caching for frequently accessed data
+severity: SEV2
